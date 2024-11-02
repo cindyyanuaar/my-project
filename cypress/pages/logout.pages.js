@@ -2,14 +2,14 @@ var LogoutPage = {
     profileDropdown: '#dropdown-profile-activator > .flex-row', 
     btnLogout: '.w-60 > :nth-child(3)', 
 
-    // Fungsi klik dropdown profile
+    // Fungsi klik dropdown 
     clickProfileDropdown: function() {
         cy.get(this.profileDropdown).click(); 
     },
 
-    // Fungsi klik tombol Logout
+    // Fungsi klik button Logout
     clickLogout: function() {
-        cy.get(this.btnLogout).click(); 
+        cy.get(this.btnLogout).click({ force: true }); 
     }
 };
 

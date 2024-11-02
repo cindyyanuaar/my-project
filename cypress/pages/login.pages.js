@@ -1,5 +1,4 @@
 var ActionPageLogin = {
-    // Definisi selector untuk elemen-elemen
     textField_Email: '#inputEmail',
     textField_Password: '#inputPass',
     btnLogin: '#btn-login',

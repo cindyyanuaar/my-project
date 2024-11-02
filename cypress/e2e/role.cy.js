@@ -17,20 +17,9 @@ describe('User can log in and manage roles', () => {
         RolePage.clickMenuRole(); 
         cy.wait(2000);
         RolePage.clickAddRole(); 
-        const roleName = 'Admin 1';
-        RolePage.inputRoleName(roleName); 
+        RolePage.inputRoleName('Admin 1'); 
         cy.wait(1000);
         RolePage.checkUserFeature();
-        RolePage.clickContinue();
-    });
-
-   /* it('User can view and edit role details', () => {
-        RolePage.clickMenuRole();
-        cy.wait(2000);
-        RolePage.clickViewRole();         
-        RolePage.clickEditRole();
-        RolePage.uncheckUserFeature();
-        RolePage.checkAccountMirroringFeature();
         RolePage.clickSaveRole();
-    });*/
+    });
 });

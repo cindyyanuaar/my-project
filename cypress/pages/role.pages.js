@@ -5,7 +5,10 @@ var RolePage = {
     addRoleModal: 'modal-add-role > .max-w-3xl > .relative > :nth-child(1) > .justify-between > .flex > .space-y-2 > .text-xl', 
     checkboxUser: '#User', 
     checkboxAccountMirroring: '#Account\\ Mirroring', // Checkbox untuk Account Mirroring (memakai escape backslash karena ada spasi di ID)
-    
+    inputRoleNameField: '#roleName',
+    btnCancelRole: 'form > .flex-row > .text-gray-700',
+    btnSaveRole: 'form > .flex-row > .text-white',
+
     // Fungsi klik menu Role
     clickMenuRole: function() {
         cy.get(this.menuRole).click(); 
@@ -18,7 +21,7 @@ var RolePage = {
 
     // Fungsi input nama role
     inputRoleName: function(name) {
-        cy.get(this.inputRoleField).type(name); 
+        cy.get('#roleName').type(name);
     },
 
     // Fungsi mencentang checkbox "User"
@@ -30,8 +33,9 @@ var RolePage = {
     clickCancel: function() {
         cy.get('form > .flex-row > .text-gray-700').click(); 
     },
-
-    clickContinue: function() {
+    
+    // save 
+    clickSaveRole: function() {
         cy.get('form > .flex-row > .text-white').click(); 
     },
 

@@ -16,7 +16,7 @@ describe('User can log in and add an account mirroring', () => {
     it('User can add a new account mirroring', () => {
         MirroringPage.addAccount();
         cy.get('#companyName').clear().type('PT Bina');
-        MirroringPage.selectType('Async');
+        MirroringPage.selectType('ASYNC');
         cy.get('#requestInterval').clear().type('20'); 
         MirroringPage.selectFrom('EasygoTest'); 
         MirroringPage.selectTo('RedBusTes');

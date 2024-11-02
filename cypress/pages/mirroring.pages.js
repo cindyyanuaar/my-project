@@ -7,6 +7,7 @@ var MirroringPage = {
     inputToDropdown: '#to', 
     inputRequestInterval: '#requestInterval', 
     btnCancel: 'form > .flex-row > .text-gray-700', 
+    btnContinue: '#btnContinue', 
 
     // Fungsi add account baru
     addAccount: function() {

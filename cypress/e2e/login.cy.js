@@ -1,7 +1,7 @@
 import loginPage from '../pages/login.pages.js';
-import LogoutPage from '../pages/logout.pages.js';
+import logoutPage from '../pages/logout.pages.js';
 
-describe('As a user, you want to log in to the application so you can continue using the application features', () => {
+describe('As a user, I want to log in', () => {
     beforeEach(() => {
         // Bersihkan session dan cookie sebelum setiap test case
         cy.clearAllSessionStorage();
@@ -11,14 +11,14 @@ describe('As a user, you want to log in to the application so you can continue u
         cy.visit('https://mirroring-staging.transtrack.id/login');
     });
 
-    // Test case untuk pesan error jika password tidak diisi
-    it('Users can see a password required error message', () => {
+    // case untuk password tidak diisi
+    it('Users can see a password required button disable', () => {
         // Isi email saja
         loginPage.inputEmail('admin@transtrack.id');
         cy.wait(5000);
     });
 
-    // Test case untuk pesan error jika email atau password salah
+    // case pesan error jika email atau password salah
     it('Users can see error messages when inputting incorrect credentials', () => {
         loginPage.inputEmail('admin@transtrack.id');
         loginPage.inputPass('4321rewq'); // password salah
@@ -27,14 +27,18 @@ describe('As a user, you want to log in to the application so you can continue u
         cy.wait(5000);
     });
 
-    it('Users can successfully log in', { tags: ['smoke'] }, () => {
+    // case untuk login berhasil
+    it('Users can successfully log in and log out', { tags: ['smoke'] }, () => {
         loginPage.inputEmail("admin@transtrack.id");
         loginPage.inputPass("password"); 
         loginPage.clickLoginButton();
-    });
 
-    //it('User can log out', () => {
-       // LogoutPage.clickProfileDropdown(); 
-      //  LogoutPage.clickLogout();
+        // Logout setelah login berhasil
+        logoutPage.clickProfileDropdown();
+        cy.wait(3000);
+        logoutPage.clickLogout();
+
+        // Assertion mastiin user kembali ke halaman login
+        cy.url().should('include', '/login');
     });
-//});
+});

@@ -1,6 +1,5 @@
 import loginPage from '../pages/login.pages.js';
 import UserPage from '../pages/user.pages.js'; 
-import LogoutPage from '../pages/logout.pages.js';
 
 describe('User can log in and manage user accounts', () => {
     beforeEach(() => {
@@ -19,15 +18,18 @@ describe('User can log in and manage user accounts', () => {
         UserPage.clickAddUser(); 
         UserPage.inputName('John testing'); 
         cy.wait(1000);
-        UserPage.inputEmail('john@gmail.com'); 
+        UserPage.inputEmail('jon4n@gmail.com'); 
         cy.wait(1000);
         UserPage.selectRole('SMG'); 
         cy.wait(1000);
-        UserPage.inputPassword('password123'); 
+        UserPage.inputPassword('!1234Qwer'); 
         cy.wait(1000);
-        UserPage.inputConfirmPassword('password123'); 
+        UserPage.inputConfirmPassword('!1234Qwer'); 
         cy.wait(1000);
         UserPage.clickContinue();
+        cy.wait(2000);
+        UserPage.clickAddUserSave();
+        cy.wait(7000);
         
     });
 
@@ -36,7 +38,7 @@ describe('User can log in and manage user accounts', () => {
         cy.wait(2000);
         UserPage.clickEditUser(); 
         cy.wait(200);
-        UserPage.editUserName('Cimin'); 
+        UserPage.editUserName('Admin Logistik'); 
         cy.wait(1000);
         UserPage.clickSaveUser();
         cy.wait(300);
@@ -47,17 +49,9 @@ describe('User can log in and manage user accounts', () => {
 
     it('User can delete user', () => {
         UserPage.clickMenuUser();
-        cy.wait(200)
+        cy.wait(200);
         UserPage.clickDeleteUser();
-    })
-
-    
-
-    // it('User can log out', () => {
-       // LogoutPage.clickProfileDropdown(); // Klik dropdown profil
-       // cy.wait(200);
-       // LogoutPage.clickLogout(); // Klik tombol logout
-       // cy.wait(300);
-      //  cy.url().should('include', '/login'); // Pastikan kembali ke halaman login
+        cy.wait(500); 
+        UserPage.confirmDeleteUser();
     });
-//});
+});

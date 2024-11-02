@@ -11,6 +11,10 @@ var UserPage = {
     inputConfirmPasswordField: ':nth-child(2) > .rounded-lg > #confirmPassword',
     inputRoleField: '.relative > .flex-col > .rounded-lg > .block',
     btnEditUser: ':nth-child(10) > :nth-child(6) > .space-x-5 > #btnEdit', 
+    btnCancelRole: 'form > .flex-row > .text-gray-700',
+    btnContinue: '#btnContinue',
+    btnAddUserSave: 'form > .flex-row > .text-white',
+    btnConfirmDeleteUser: '#modalDeleteUser > .max-w-3xl > .relative > .p-2 > .flex-col > div.flex > #btnConfirm', 
 
     // Fungsi klik menu User
     clickMenuUser: function() {
@@ -58,6 +62,11 @@ var UserPage = {
         cy.get('#btnContinue').click({ force: true }); 
     },
 
+    // Fungsi untuk klik tombol 'Add User' yang menyimpan user
+    clickAddUserSave: function() {
+        cy.get('form > .flex-row > .text-white').click({ force: true }); 
+    },
+
     //Fungsi klik tombol 'Edit' pada user tertentu
     clickEditUser: function() {
         cy.get(this.btnEditUser).click(); 
@@ -76,7 +85,18 @@ var UserPage = {
     // Fungsi untuk klik button delete
     clickDeleteUser: function() {
         cy.get(this.btnDeleteUser).click();
+    },
+
+    // Fungsi untuk klik button delete
+    clickDeleteUser: function() {
+        cy.get(this.btnDeleteUser).click();
+    },
+
+    // Fungsi untuk konfirmasi delete (klik tombol "Yes, Delete")
+    confirmDeleteUser: function() {
+        cy.get('#modalDeleteUser > .max-w-3xl > .relative > .p-2 > .flex-col > div.flex > #btnConfirm').click();
     }
+
 };
 
 export default UserPage;

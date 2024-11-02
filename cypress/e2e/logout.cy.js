@@ -1,6 +1,6 @@
 import loginPage from '../pages/login.pages.js';
 import LogoutPage from '../pages/logout.pages.js';
-import UserPage from '../pages/user.pages.js'; // Jika perlu untuk navigasi sebelumnya
+import UserPage from '../pages/user.pages.js'; 
 
 describe('User can log out', () => {
     beforeEach(() => {
@@ -10,13 +10,13 @@ describe('User can log out', () => {
             loginPage.inputPass(data.password);
         });
         loginPage.clickLoginButton();
-        cy.url().should('include', '/account-mirroring'); // Memastikan pengguna diarahkan ke halaman Account Mirroring
+        cy.url().should('include', '/account-mirroring'); 
+        cy.wait(5000);
     });
 
-    it('User can log out successfully', () => {
-        // Klik dropdown profil
+    it('User can log out', () => {
         LogoutPage.clickProfileDropdown();
-        cy.wait(200);
+        cy.wait(3000);
         LogoutPage.clickLogout();
         
     });
