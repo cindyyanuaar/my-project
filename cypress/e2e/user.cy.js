@@ -18,9 +18,9 @@ describe('User can log in and manage user accounts', () => {
         UserPage.clickAddUser(); 
         UserPage.inputName('John testing'); 
         cy.wait(1000);
-        UserPage.inputEmail('jon4n@gmail.com'); 
+        UserPage.inputEmail('jotn@gmail.com'); 
         cy.wait(1000);
-        UserPage.selectRole('SMG'); 
+        UserPage.selectRole('Admin 1'); 
         cy.wait(1000);
         UserPage.inputPassword('!1234Qwer'); 
         cy.wait(1000);
@@ -29,9 +29,8 @@ describe('User can log in and manage user accounts', () => {
         UserPage.clickContinue();
         cy.wait(2000);
         UserPage.clickAddUserSave();
-        cy.wait(7000);
-        
-    });
+        cy.wait(7000); 
+     }); 
 
     it('User can edit an user', () => {
         UserPage.clickMenuUser(); 
@@ -53,5 +52,11 @@ describe('User can log in and manage user accounts', () => {
         UserPage.clickDeleteUser();
         cy.wait(500); 
         UserPage.confirmDeleteUser();
+    });
+
+   it('User can filter by Super Admin role', () => {
+    UserPage.clickMenuUser();
+    cy.wait(3000);
+    UserPage.filter();
     });
 });

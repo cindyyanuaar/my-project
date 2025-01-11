@@ -14,6 +14,10 @@ var UserPage = {
     btnCancelRole: 'form > .flex-row > .text-gray-700',
     btnContinue: '#btnContinue',
     btnAddUserSave: 'form > .flex-row > .text-white',
+    btnFilter: '#btnFilter',
+    btnApply: '.p-4 > .flex-row > .text-white',
+    btnReset: '.p-4 > .flex-row > .text-gray-700',
+    checkboxSuperAdmin: '#active-filter-0 > .w-4',
     btnConfirmDeleteUser: '#modalDeleteUser > .max-w-3xl > .relative > .p-2 > .flex-col > div.flex > #btnConfirm', 
 
     // Fungsi klik menu User
@@ -69,22 +73,16 @@ var UserPage = {
 
     //Fungsi klik tombol 'Edit' pada user tertentu
     clickEditUser: function() {
-        cy.get(this.btnEditUser).click(); 
-    },
+        cy.get(':nth-child(1) > :nth-child(6) > .space-x-5 > #btnEdit').click({ force: true })},
 
     // Fungsi edit nama user
     editUserName: function(newName) {
-        cy.get(this.inputNameField).clear().type(newName);
+    cy.get(this.inputNameField).clear().click({ force: true }).type(newName, { force: true });
     },
 
     // Fungsi klik 'Save'
     clickSaveUser: function() {
-        cy.get('form > .flex-row > .text-white').click(); 
-    },
-
-    // Fungsi untuk klik button delete
-    clickDeleteUser: function() {
-        cy.get(this.btnDeleteUser).click();
+        cy.get('form > .flex-row > .text-white').click({ force: true }); 
     },
 
     // Fungsi untuk klik button delete
@@ -95,6 +93,20 @@ var UserPage = {
     // Fungsi untuk konfirmasi delete (klik tombol "Yes, Delete")
     confirmDeleteUser: function() {
         cy.get('#modalDeleteUser > .max-w-3xl > .relative > .p-2 > .flex-col > div.flex > #btnConfirm').click();
+    },
+
+    // Fungsi filter 
+    filter: function() {
+        cy.get(this.btnFilter).click();
+        cy.wait(2000);
+        cy.get(this.checkboxSuperAdmin).click({ force: true});
+        cy.wait(2000);
+        cy.get(this.btnApply).click({ force: true});
+        cy.wait(3000);
+        cy.get(this.btnFilter).click();
+        cy.wait(2000);
+        cy.get(this.btnReset).click({force: true});
+
     }
 
 };

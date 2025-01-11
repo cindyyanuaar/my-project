@@ -8,7 +8,7 @@ describe('As a user, I want to log in', () => {
         cy.clearAllLocalStorage();
         cy.clearCookies();
         cy.viewport(1920, 1080);
-        cy.visit('https://mirroring-staging.transtrack.id/login');
+        cy.visit('https://mirroring-staging.transtrack.id/');
     });
 
     // case untuk password tidak diisi
@@ -30,7 +30,7 @@ describe('As a user, I want to log in', () => {
     // case untuk login berhasil
     it('Users can successfully log in and log out', { tags: ['smoke'] }, () => {
         loginPage.inputEmail("admin@transtrack.id");
-        loginPage.inputPass("password"); 
+        loginPage.inputPass("Password123@"); 
         loginPage.clickLoginButton();
 
         // Logout setelah login berhasil

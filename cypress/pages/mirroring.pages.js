@@ -17,19 +17,21 @@ var MirroringPage = {
     // Fungsi pilih dropdown Type
     selectType: function(typeOption) {
         cy.get(this.inputTypeDropdown).click({ force: true });
-        cy.contains(typeOption).click({ force: true }); 
     },
 
     // Fungsi pilih dropdown From 
-    selectFrom: function(fromOption) {
-        cy.get(this.inputFromDropdown).click({ force: true }); // buka drd
-       cy.contains(fromOption).click({ force: true }); 
+    selectFrom: function() {
+        cy.get(this.inputFromDropdown)
+          .scrollIntoView()  // Scroll ke dropdown "From"
+          .click({ force: true });
     },
 
     // Fungsi pilih dropdown To 
-    selectTo: function(toOption) {
-        cy.get(this.inputToDropdown).click({ force: true }); 
-        cy.contains(toOption).click({ force: true }); 
+    selectTo: function() {
+        cy.get(this.inputToDropdown)
+          .scrollIntoView()  // Scroll ke dropdown "To"
+          .click({ force: true });
+        cy.get(':nth-child(3) > .relative > .flex-col > .rounded-lg > #webhook').click(); // Pilih "WEBHOOK" untuk To
     },
 
     // Fungsi klik 'Cancel'

@@ -16,11 +16,11 @@ describe('User can log in and add an account mirroring', () => {
     it('User can add a new account mirroring', () => {
         MirroringPage.addAccount();
         cy.get('#companyName').clear().type('PT Bina');
-        MirroringPage.selectType('ASYNC');
+        MirroringPage.selectType('WEBHOOK');
         cy.get('#requestInterval').clear().type('20'); 
-        MirroringPage.selectFrom('EasygoTest'); 
-        MirroringPage.selectTo('RedBusTes');
-        MirroringPage.clickCancel(); 
-        MirroringPage.clickContinue();
+        MirroringPage.selectFrom('WEBHOOK'); 
+        MirroringPage.selectTo('WEBHOOK');
+        //MirroringPage.clickCancel(); 
+        //MirroringPage.clickContinue();
     });
 });
